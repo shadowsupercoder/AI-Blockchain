@@ -22,6 +22,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import AdminLayout from 'layouts/Admin/Admin.js';
 import HomePage from 'views/HomePage';
 import LoginPage from 'views/LoginPage';
+import SignTransaction from 'views/SignTransactionPage.js';
 import Login from 'views/Login.js';
 import Register from 'views/Register.js';
 
@@ -38,7 +39,7 @@ import BackgroundColorWrapper from './components/BackgroundColorWrapper/Backgrou
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const isWindows = navigator.platform.includes('Win');
 
-if (isWindows) {
+if (!isWindows) {
   root.render(
     <ThemeContextWrapper>
       <BackgroundColorWrapper>
@@ -49,6 +50,7 @@ if (isWindows) {
             <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
             <Route path="/login" render={() => <Login />} />
             <Route path="/register" render={() => <Register />} />
+            <Route path="/sign" render={() => <SignTransaction />} />
             <Redirect from="*" to="/home" />
           </Switch>
         </BrowserRouter>
